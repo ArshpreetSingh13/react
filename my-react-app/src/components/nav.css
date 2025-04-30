@@ -1,0 +1,12 @@
+nav{
+    padding: 30px;
+    background-color: aqua;
+}
+ul{
+    margin-left: 50px;
+    display: flex;
+    gap: 34px;
+}
+li{
+    list-style: none;
+}

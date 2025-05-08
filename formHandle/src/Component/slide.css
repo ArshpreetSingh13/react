@@ -1,0 +1,13 @@
+.B{
+    border-bottom: 2px solid rgb(87, 86, 86);
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-radius: 0px;
+    transition: 0.5s;
+}
+.B:focus{
+    border-radius: 10px;
+    transition: 0.5s;
+    
+}

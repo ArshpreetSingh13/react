@@ -22,7 +22,7 @@ function slider() {
     function add() {
         const newChild = `Hobby ${children.length + 1}`;
         setchildren([...children, newChild])
-        console.log(children);
+       
         
         
     }
@@ -112,7 +112,7 @@ function slider() {
                         </div>
                         <div className="col-md-3">
                             <button type='button' onClick={add} className='btn btn-primary'>+</button>
-                            <button type='button' onClick={remove} className='btn btn-primary ms-4'>-</button>
+                            <button type='button' onClick={remove}  className='btn btn-primary ms-4'>-</button>
 
                         </div>
                     </div>

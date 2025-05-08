@@ -138,7 +138,7 @@ function Forms() {
                                             <option>Uttarakhand</option>
                                             <option>West Bengal</option>
                                         </select>
-                                    </div>
+                                    </div> 
 
                                 </div>
                             </div>

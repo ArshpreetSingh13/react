@@ -6,6 +6,7 @@ function page() {
 
     const [todo, settodo] = useState("")
     const [todos, settodos] = useState([])
+    const [show, setshow] = useState(false)
 
 
 
@@ -48,13 +49,9 @@ function page() {
         const newTodos = todos.filter((item, index) => {
             return index != id
         })
-
         settodos(newTodos)
 
         saveToLocal()
-
-
-
 
     }
 
@@ -71,11 +68,14 @@ function page() {
 
 
     }
+    function handleShowDone() {
+        setshow(!show)
+    }
 
     function saveToLocal() {
         localStorage.setItem("todos", JSON.stringify(todos))
         console.log("complete");
-        
+
     }
     return (
         <>
@@ -90,8 +90,9 @@ function page() {
 
                             <button className="btn addbtn text-white" type="button" onClick={handleAdd}>ADD</button>
                         </div>
+                        <input className='me-2' type="checkbox" name="" id="" checked={show} onChange={handleShowDone} />See Your completed Work
 
-                        
+
                     </div>
                     <ul className="list-group list-group-flush ">
                         {
@@ -99,26 +100,31 @@ function page() {
 
                                 <div key={index}>
 
+                                    { (show || !item.complete) &&
 
-                                    <li className={item.complete ? "text-decoration-line-through list-group-item d-flex  justify-content-between align-items-center " : " list-group-item d-flex  justify-content-between align-items-center"}>
-                                        <span >
-                                            <input className='me-3' type="checkbox" name="" 
-                                            checked={item.complete}
-                                                id={index} onChange={handleCheck} />
+                                        <li className={item.complete ? "text-decoration-line-through list-group-item d-flex  justify-content-between align-items-center " : " list-group-item d-flex  justify-content-between align-items-center"}>
+                                            <span >
+                                                <input className='me-3' type="checkbox" name=""
+                                                    checked={item.complete}
+                                                    id={index} onChange={handleCheck} />
 
 
-                                            {item.todo}
-                                        </span>
-                                        <span>
-                                            <button className="btn addbtn text-white me-2" type="button"
-                                                id={index} onClick={handleEdit} >EDIT</button>
+                                                {item.todo}
+                                            </span>
+                                            <span>
+                                                <button className="btn addbtn text-white me-2" type="button"
+                                                    id={index} onClick={handleEdit} >EDIT</button>
 
-                                            <button className="btn addbtn text-white" type="button"
-                                                onClick={handleDelete} id={index}
-                                            >DELETE</button>
+                                                <button className="btn addbtn text-white" type="button"
+                                                    onClick={handleDelete} id={index}
+                                                >DELETE</button>
 
-                                        </span>
-                                    </li>
+                                            </span>
+                                        </li>
+
+                                    }
+                                        
+
                                 </div>
 
                             ))

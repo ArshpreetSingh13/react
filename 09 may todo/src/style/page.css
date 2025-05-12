@@ -1,0 +1,10 @@
+.VC{
+    background-color: rgb(124, 2, 124);
+}
+.addbtn{
+    background-color: rgb(155, 2, 155);
+}
+
+.addbtn:hover {
+    background-color: rgb(82, 2, 82);
+}

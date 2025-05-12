@@ -30,6 +30,8 @@ function slider() {
     function remove(){
         if(children.length>0){
             setchildren(children.slice(0,-1))
+           console.log(children);
+           
             
         }
     }
@@ -100,7 +102,7 @@ function slider() {
 
 
 
-                                    <div className="mb-3" key={index} >
+                                   <div className="mb-3" key={index} >
                                         
 
                                         <input type="text"  {...register(child, { required: { value: true, message: "Fill this up" } })} className="form-control B  " placeholder="Enter your hobbies" />

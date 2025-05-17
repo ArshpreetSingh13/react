@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import axios from 'axios';
 
 import "./slide.css"
 
@@ -14,35 +15,18 @@ function slider() {
     const onSubmit = (data) => {
         console.log(data);
 
-    }
-
-    const [children, setchildren] = useState([
-
-    ])
-    function add() {
-        const newChild = `Hobby ${children.length + 1}`;
-        setchildren([...children, newChild])
-       
-        
-        
-    }
-    
-    function remove(){
-        if(children.length>0){
-            setchildren(children.slice(0,-1))
-           console.log(children);
-           
+        try {
+             axios.post("http://127.0.0.1:5000/api/form/form_add",data)
+        } catch (error) {
+            console.log(error);
             
         }
+
+
+
     }
 
-    useEffect(() => {
-      
-    
-      return () => {
-        add()
-      }
-    }, [])
+   
     
     
 
@@ -57,15 +41,15 @@ function slider() {
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label className="form-label text-secondary ms-3">Your Name<span className='text-danger'>*</span> </label>
-                                <input type="text" {...register("FirstName", { required: { value: true, message: "Please Enter Your First Name" } })} className="form-control" placeholder="Enter your First Name" />
+                                <input type="text" {...register("firstName", { required: { value: true, message: "Please Enter Your First Name" } })} className="form-control" placeholder="Enter your First Name" />
                             </div>
 
-                            {errors.FirstName && <span className='text-danger'>{errors.FirstName.message}</span>}
+                            {errors.firstName && <span className='text-danger'>{errors.firstName.message}</span>}
                         </div>
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label className="form-label text-secondary ms-3">Your Last Name</label>
-                                <input type="text" {...register("SecondName")} className="form-control" placeholder="Enter your last Name" />
+                                <input type="text" {...register("lastName")} className="form-control" placeholder="Enter your last Name" />
 
 
                             </div>
@@ -84,40 +68,15 @@ function slider() {
                         <div className="col-md-6">
                             <div className="mb-3">
                                 <label className="form-label text-secondary ms-3">Your Contact<span className='text-danger'>*</span> </label>
-                                <input type="number" {...register("Contact", { required: { value: true, message: "Fill this up" }, minLength: { value: 10, message: "Your numbers are less than 10" }, maxLength: { value: 10, message: "Your numbers are more than 10" } })} className="form-control" placeholder="Enter your phone number" />
-                                {errors.Contact && <span className='text-danger'>{errors.Contact.message}</span>}
+                                <input type="number" {...register("contect", { required: { value: true, message: "Fill this up" }, minLength: { value: 10, message: "Your numbers are less than 10" }, maxLength: { value: 10, message: "Your numbers are more than 10" } })} className="form-control" placeholder="Enter your phone number" />
+                                {errors.contect && <span className='text-danger'>{errors.contect.message}</span>}
                             </div>
                         </div>
 
 
 
                     </div>
-                    <div className="row">
-                        <div className="col-md-3"></div>
-                        <div className="col-md-6 ">
-                            <label className="form-label text-secondary ms-3">Enter your hobby<span className='text-danger'>*</span> </label>
-                            {
-                                children.map((child, index) => (
-
-
-
-
-                                   <div className="mb-3" key={index} >
-                                        
-
-                                        <input type="text"  {...register(child, { required: { value: true, message: "Fill this up" } })} className="form-control B  " placeholder="Enter your hobbies" />
-
-                                        {errors.hobby && <span className='text-danger'>{errors.hobby.message}</span>}
-                                    </div>
-                                ))
-                            }
-                        </div>
-                        <div className="col-md-3">
-                            <button type='button' onClick={add} className='btn btn-primary'>+</button>
-                            <button type='button' onClick={remove}  className='btn btn-primary ms-4'>-</button>
-
-                        </div>
-                    </div>
+                  
                     <div className="row">
                         <div className="col-md-6 offset-3">
                             <div className="mb-3 d-flex justify-content-center">

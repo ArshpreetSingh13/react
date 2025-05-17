@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 
 let FormSchema = mongoose.Schema({
-    autoId: { type: Number, default: 0 },
-
-    
+    autoId: { type: Number, default: 0 },    
     firstName: { type: String, default: "First name" },
     lastName: { type: String, default: "last name" },
     email: { type: String, default: "email" },

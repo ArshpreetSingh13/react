@@ -60,7 +60,7 @@ let add = (req, res) => {
             res.send({
                 success: false,
                 massege: validation,
-                status: 200
+                status: 500
             })
         })
         
